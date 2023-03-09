@@ -10,7 +10,7 @@ A dark Neovim theme written in Lua ported from the Visual Studio Code [Dark Molo
 - minimal inactive statusline
 - vim terminal colors
 - darker background for sidebar-like windows
-- **lualine** theme
+- ~~**lualine** theme~~
 
 ### Plugin Support
 
@@ -26,7 +26,7 @@ A dark Neovim theme written in Lua ported from the Visual Studio Code [Dark Molo
 - [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 <!-- - [Dashboard](https://github.com/glepnir/dashboard-nvim) -->
 <!-- - [BufferLine](https://github.com/akinsho/nvim-bufferline.lua) -->
-- [Lualine](https://github.com/hoob3rt/lualine.nvim)
+- ~~[Lualine](https://github.com/hoob3rt/lualine.nvim)~~
 <!-- - [Neogit](https://github.com/TimUntersberger/neogit) -->
 <!-- - [Fern](https://github.com/lambdalisue/fern.vim) -->
 <!-- - [Barbar](https://github.com/romgrk/barbar.nvim) -->
@@ -65,17 +65,7 @@ colorscheme molokai
 vim.cmd[[colorscheme molokai]]
 ```
 
-To enable the `Molokai` theme for `Lualine`, simply specify it in your lualine settings:
-
-```lua
-require('lualine').setup {
-  options = {
-    -- ... your lualine config
-    theme = 'molokai'
-    -- ... your lualine config
-  }
-}
-```
+To enable the `Molokai` theme for `Lualine`, use the original version [here](https://github.com/UtkarshVerma/molokai.nvim/).
 
 <!-- ## ⚙️ Configuration
 
