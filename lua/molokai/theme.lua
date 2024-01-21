@@ -346,12 +346,12 @@ function M.setup()
     TelescopeNormal = { fg = c.fg, bg = c.bg_float },
 
     -- NvimTree
-    NvimTreeNormal = { fg = c.fg_sidebar, bg = c.bg_sidebar },
+    NvimTreeNormal = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg },
     NvimTreeWinSeparator = {
       fg = options.styles.sidebars == "transparent" and c.border or c.bg_sidebar,
-      bg = c.bg_sidebar,
+      bg = options.transparent and c.none or c.bg, 
     },
-    NvimTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
+    NvimTreeNormalNC = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg },
     NvimTreeRootFolder = { fg = c.blue, bold = true },
     NvimTreeGitDirty = { fg = c.git.change },
     NvimTreeGitNew = { fg = c.git.add },
@@ -364,8 +364,8 @@ function M.setup()
     NvimTreeFolderIcon = { bg = c.none, fg = c.blue },
     -- NvimTreeFolderName= { fg = c.fg_float },
 
-    NeoTreeNormal = { fg = c.fg_sidebar, bg = c.bg_sidebar },
-    NeoTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
+    NeoTreeNormal = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg },
+    NeoTreeNormalNC = { fg = c.fg_sidebar, bg = options.transparent and c.none or c.bg },
 
     -- Fern
     FernBranchText = { fg = c.blue },
