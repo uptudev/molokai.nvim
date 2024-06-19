@@ -117,7 +117,7 @@ function M.setup()
     PreProc = { fg = c.magenta }, -- (preferred) generic Preprocessor
     -- Include       = { }, --  preprocessor #include
     -- Define        = { }, --   preprocessor #define
-    -- Macro         = { }, --    same as Define
+    Macro = { fg = c.green },
     -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
 
     Type = { fg = c.cyan }, -- (preferred) int, long, char, etc.
@@ -125,7 +125,7 @@ function M.setup()
     -- Structure     = { }, --  struct, union, enum, etc.
     -- Typedef       = { }, --  A typedef
 
-    Special = { fg = c.blue1 }, -- (preferred) any special symbol
+    Special = { fg = c.blue }, -- (preferred) any special symbol
     -- SpecialChar   = { }, --  special character in a constant
     -- Tag           = { }, --    you can use CTRL-] on this
     -- Delimiter     = { }, --  character that needs attention
@@ -216,7 +216,7 @@ function M.setup()
     ["@text.note"] = { fg = c.bg, bg = c.info },
     ["@text.warning"] = { fg = c.bg, bg = c.warning },
     ["@text.danger"] = { fg = c.bg, bg = c.error },
-    ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+    -- ["@constructor"] = { }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
     -- TSConditional       = { };    -- For keywords related to conditionnals.
     -- TSConstant          = { };    -- For constants
     ["@constant.builtin"] = { fg = c.green }, -- For constant that are built in the language: `nil` in Lua.
@@ -249,7 +249,7 @@ function M.setup()
     -- ["@string.regex"]   = { }, -- For regexes.
     ["@string.escape"] = { fg = c.purple }, -- For escape characters within a string.
     -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    -- ["@type"]           = { },    -- For types.
+    -- ["@type"] = { fg = c.green }, -- For types.
     ["@type.qualifier"] = { fg = c.magenta },
     -- TSTypeBuiltin       = { };    -- For builtin types.
     ["@variable"] = { style = options.styles.variables }, -- Any variable name that does not have another highlight.
@@ -263,13 +263,30 @@ function M.setup()
     -- TSUnderline         = { };    -- For text to be represented with an underline.
     ["@text.strike"] = { strikethrough = true }, -- For strikethrough text.
     -- TSTitle             = { };    -- Text that is part of a title.
-    ["@text.literal"] = { fg = c.orange };    -- Literal text.
-    ["@text.uri"] = { style = "underline" };    -- Any URI like a link or email.
+    ["@text.literal"] = { fg = c.orange }, -- Literal text.
+    ["@text.uri"] = { style = "underline" }, -- Any URI like a link or email.
     ["@text.diff.add"] = { link = "DiffAdd" },
     ["@text.diff.delete"] = { link = "DiffDelete" },
 
+    ["@namespace"] = { link = "Include" },
     -- Lua
     -- luaTSProperty = { fg = c.red }, -- Same as `TSField`.
+
+    -- LSP Semantic Token Groups
+    ["@lsp.type.comment"] = { link = "@comment" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.interface"] = { link = "Identifier" },
+    ["@lsp.type.keyword"] = { link = "@keyword" },
+    ["@lsp.type.namespace"] = { link = "@namespace" },
+    ["@lsp.type.parameter"] = { link = "@parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.variable"] = {}, -- use treesitter styles for regular variables
+    ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.operator.injected"] = { link = "@operator" },
+    ["@lsp.typemod.string.injected"] = { link = "@string" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    ["@lsp.typemod.variable.injected"] = { link = "@variable" },
 
     -- ts-rainbow
     rainbowcol1 = { fg = c.red },
@@ -549,35 +566,35 @@ function M.setup()
     CmpItemKindSnippet = { fg = c.purple, bg = c.none },
 
     -- navic
-    NavicIconsFile = { fg = c.fg, bg = c.none },
-    NavicIconsModule = { fg = c.yellow, bg = c.none },
-    NavicIconsNamespace = { fg = c.fg, bg = c.none },
-    NavicIconsPackage = { fg = c.fg, bg = c.none },
-    NavicIconsClass = { fg = c.orange, bg = c.none },
-    NavicIconsMethod = { fg = c.blue, bg = c.none },
-    NavicIconsProperty = { fg = c.green, bg = c.none },
-    NavicIconsField = { fg = c.green, bg = c.none },
-    NavicIconsConstructor = { fg = c.orange, bg = c.none },
-    NavicIconsEnum = { fg = c.orange, bg = c.none },
-    NavicIconsInterface = { fg = c.orange, bg = c.none },
-    NavicIconsFunction = { fg = c.blue, bg = c.none },
-    NavicIconsVariable = { fg = c.magenta, bg = c.none },
-    NavicIconsConstant = { fg = c.magenta, bg = c.none },
-    NavicIconsString = { fg = c.green, bg = c.none },
-    NavicIconsNumber = { fg = c.orange, bg = c.none },
-    NavicIconsBoolean = { fg = c.orange, bg = c.none },
-    NavicIconsArray = { fg = c.orange, bg = c.none },
-    NavicIconsObject = { fg = c.orange, bg = c.none },
-    NavicIconsKey = { fg = c.purple, bg = c.none },
-    NavicIconsKeyword = { fg = c.purple, bg = c.none },
-    NavicIconsNull = { fg = c.orange, bg = c.none },
-    NavicIconsEnumMember = { fg = c.green, bg = c.none },
-    NavicIconsStruct = { fg = c.orange, bg = c.none },
-    NavicIconsEvent = { fg = c.orange, bg = c.none },
-    NavicIconsOperator = { fg = c.fg, bg = c.none },
-    NavicIconsTypeParameter = { fg = c.green, bg = c.none },
-    NavicText = { fg = c.fg, bg = c.none },
-    NavicSeparator = { fg = c.fg, bg = c.none },
+    NavicIconsFile = { fg = c.fg, bg = c.bg_statusline },
+    NavicIconsModule = { fg = c.yellow, bg = c.bg_statusline },
+    NavicIconsNamespace = { fg = c.fg, bg = c.bg_statusline },
+    NavicIconsPackage = { fg = c.fg, bg = c.bg_statusline },
+    NavicIconsClass = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsMethod = { fg = c.blue, bg = c.bg_statusline },
+    NavicIconsProperty = { fg = c.green, bg = c.bg_statusline },
+    NavicIconsField = { fg = c.green, bg = c.bg_statusline },
+    NavicIconsConstructor = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsEnum = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsInterface = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsFunction = { fg = c.blue, bg = c.bg_statusline },
+    NavicIconsVariable = { fg = c.magenta, bg = c.bg_statusline },
+    NavicIconsConstant = { fg = c.magenta, bg = c.bg_statusline },
+    NavicIconsString = { fg = c.green, bg = c.bg_statusline },
+    NavicIconsNumber = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsBoolean = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsArray = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsObject = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsKey = { fg = c.purple, bg = c.bg_statusline },
+    NavicIconsKeyword = { fg = c.purple, bg = c.bg_statusline },
+    NavicIconsNull = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsEnumMember = { fg = c.green, bg = c.bg_statusline },
+    NavicIconsStruct = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsEvent = { fg = c.orange, bg = c.bg_statusline },
+    NavicIconsOperator = { fg = c.fg, bg = c.bg_statusline },
+    NavicIconsTypeParameter = { fg = c.green, bg = c.bg_statusline },
+    NavicText = { fg = c.fg, bg = c.bg_statusline },
+    NavicSeparator = { fg = c.fg, bg = c.bg_statusline },
 
     IndentBlanklineChar = { fg = util.darken(c.fg_gutter, 0.4), nocombine = true },
     IndentBlanklineContextChar = { fg = util.darken(c.fg_gutter, 0.7), nocombine = true },
@@ -642,7 +659,7 @@ function M.setup()
     MiniCursorword = { bg = c.fg_gutter },
     MiniCursorwordCurrent = { bg = c.fg_gutter },
 
-    MiniIndentscopeSymbol = { fg = c.blue1 },
+    MiniIndentscopeSymbol = { fg = util.darken(c.fg_gutter, 0.7), nocombine = true },
     MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible
 
     MiniJump = { bg = c.magenta, fg = "#ffffff" },
@@ -688,6 +705,7 @@ function M.setup()
     MiniTrailspace = { bg = c.red },
 
     -- Noice
+    NoiceMini = { fg = c.fg, bg = c.bg_dark },
 
     NoiceCompletionItemKindDefault = { fg = c.fg_dark, bg = c.none },
 
